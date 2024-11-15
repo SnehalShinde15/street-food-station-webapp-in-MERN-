@@ -1,0 +1,139 @@
+.order-item {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  align-items: start;
+  gap: 30px;
+  border: 1px solid tomato;
+  padding: 20px;
+  margin: 30px 0px;
+  font-size: 14px;
+  color: #505050;
+}
+
+.order-item > h1 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  background-color: whitesmoke;
+  color: tomato;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 8px 8px 0 0;
+}
+
+.order-item-food, .order-item-name {
+  font-weight: 600;
+}
+
+.order-item-name {
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.order-item-address {
+  margin-bottom: 10px;
+}
+
+.order-item select {
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  width: max(10vw, 120px);
+  padding: 10px;
+  outline: none;
+}
+
+@media(max-width:1000px) {
+  .order-item {
+    font-size: 12px;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    padding: 15px 8px;
+  }
+  
+  .order-item select {
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  .order-item img {
+    width: 40px;
+  }
+}
+
+/* Orders.css */
+.button-size {
+  height: 30px;
+  width: 150px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 30px;
+  margin: 0; /* Remove all margins */
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-controls input[type="date"] {
+  padding: 5px;
+  margin-right: 10px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.generate-report {
+  margin-bottom: 9px;
+  /* padding: 0 10px; */
+  /* padding: 0 10px; Adjust padding */
+  height: 40px; /* Match height of date input */
+  /* line-height: 30px; Center text vertically */
+  /* background-color: #4CAF50; */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.generate-report:hover {
+  background-color: rgb(252, 122, 99);
+}
+
+/* New styles for pagination and buttons */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0; /* Adjust margin as needed */
+}
+
+.pagination .button-size {
+  padding: 5px 10px; /* Smaller padding for smaller buttons */
+  font-size: 14px; /* Adjust font size */
+  margin: 0 2px; /* Space between buttons */
+  height: 40px;
+  border: 1px solid #ccc; /* Border for buttons */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  width: 70px; /* Set a specific width for pagination buttons */
+  box-sizing: border-box; /* Include padding and border in width */
+  text-align: center;
+  text-indent: 1px;
+ 
+}
+
+.button-size:hover {
+  background-color: #f0f0f0; /* Hover effect */
+}
+
+.disabled {
+    opacity: 0.5; /* Make disabled buttons look inactive */
+    cursor: not-allowed; /* Change cursor for disabled buttons */
+}
+
+.active {
+    background-color: #007bff; /* Active button color */
+    color: white; /* Text color for active button */
+}

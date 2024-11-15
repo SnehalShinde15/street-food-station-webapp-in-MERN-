@@ -1,0 +1,67 @@
+.sidebar {
+    width: 18%;
+    min-height: 100vh;
+    border: 1px solid #ddd; /* Soft border for a clean look */
+    border-top: 0;
+    font-size: max(1vw, 10px);
+    background-color: #fff; /* Bright white background */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+.sidebar:hover {
+    background-color: #f7f7f7; /* Light hover effect for interaction */
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.sidebar-options {
+    padding-top: 20%; /* Space from the top */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between items */
+}
+
+.sidebar-option {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between icon and text */
+    border: 1px solid transparent; /* Invisible border for consistent spacing */
+    border-left: 4px solid transparent; /* Left border for active effect */
+    padding: 12px 14px; /* Ample padding for better touch target */
+    border-radius: 8px; /* More pronounced rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+}
+
+.sidebar-option:hover {
+    background-color: #ffcccc; /* Light red background on hover */
+    border-color: #e74c3c; /* Tomato border on hover */
+    transform: scale(1.02); /* Slight scale effect for emphasis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.sidebar-option.active {
+    background-color: #ffe6e6; /* Active state background */
+    border-color: tomato; /* Tomato border for active state */
+}
+
+.sidebar-option img {
+    width: 30px; /* Larger icon for visibility */
+    height: 30px; /* Consistent icon size */
+    transition: transform 0.3s; /* Smooth icon transition */
+}
+
+.sidebar-option img:hover {
+    transform: rotate(360deg); /* Icon rotation on hover for fun effect */
+}
+
+.sidebar-option p {
+    font-weight: bold; /* Bold text for emphasis */
+    color: #333; /* Darker text for better readability */
+}
+
+@media (max-width: 900px) {
+    .sidebar-option p {
+        display: none; /* Hide text on smaller screens */
+    }
+}

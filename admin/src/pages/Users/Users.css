@@ -1,0 +1,118 @@
+.users-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+  
+  .users-container > h1 {
+    margin-top: 20px;
+    background-color: whitesmoke;
+    color: tomato;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .users-container table {
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .users-container th,
+  .users-container td {
+    padding: 12px;
+    text-align: left;
+    border: none;
+  }
+  
+  .users-container th {
+    background-color: tomato;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .users-container tbody tr:hover {
+    background-color: #ffebee;
+  }
+  
+  .users-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .users-container tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  .date-filters{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .date-filters label{
+    margin-right: 10px;
+  }
+  .date-filters input{
+    width: 240px;
+    justify-content: space-between;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .date-filters button{
+    width: 250px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: tomato;
+    color: white;
+  }
+  
+
+  
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    tr {
+      margin-bottom: 15px;
+    }
+  
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+    }
+  
+    td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      content: attr(data-label);
+      font-weight: bold;
+    }
+  }

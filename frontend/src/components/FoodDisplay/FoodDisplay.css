@@ -1,0 +1,54 @@
+.food-display{
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+.food-display h2{
+    font-size: max(2vw, 24px);
+    font-weight: 600;
+}
+.food-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px, 1fr));
+    margin-top: 30px;
+    gap: 30px;
+    row-gap: 50px;
+
+}
+.food-display-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-icon {
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: tomato;
+    transition: color 0.3s ease;
+}
+
+.filter-icon:hover {
+    color: #ff6347; /* A slightly darker shade of tomato */
+}
+
+.filter-options {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-options input {
+    padding: 8px 12px;
+    border: 2px solid tomato;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-options input:focus {
+    outline: none;
+    border-color: #ff6347; /* A slightly darker shade of tomato */
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.25);
+}

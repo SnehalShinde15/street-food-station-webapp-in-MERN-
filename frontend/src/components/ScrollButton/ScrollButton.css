@@ -1,0 +1,32 @@
+/* App.css or a specific CSS file */
+.scroll-button {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  bottom: 80px; /* Adjust the value to place the button above the footer */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  z-index: 1000;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.scroll-to-top {
+  background-color: tomato;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 16px; /* Reduced font size */
+  padding: 8px 12px; /* Reduced padding */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.scroll-to-top:hover {
+  background-color: #49557e;
+  transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
