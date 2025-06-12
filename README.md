@@ -67,9 +67,8 @@ Contributions are welcome!
 ## 📧 Contact Us
 For feedback or queries, feel free to reach out:
 
-📩 **Vrushibh:** [rishibh.bhalodiya@gmail.com](mailto:rishibh.bhalodiya@gmail.com)  
-📩 **Dhruvi:** [dhruvikalariya2002@gmail.com](mailto:dhruvikalariya2002@gmail.com)
+📩 **Snehal:** [snehal05shinde@gmail.com]  
+
 
 ---
 
-❤️ **Developed with passion by Vrushibh & Dhruvi** ✨✨✨
