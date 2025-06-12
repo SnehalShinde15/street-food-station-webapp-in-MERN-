@@ -13,7 +13,7 @@ import 'dotenv/config';
 // const feedbackRoutes = require('./routes/feedbackRoute.js');
 // App config
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 5000; // Use environment variable with fallback
 
 // Middleware
 app.use(express.json());

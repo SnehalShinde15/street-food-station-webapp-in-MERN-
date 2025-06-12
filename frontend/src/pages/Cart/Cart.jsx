@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const {cartItems, food_list, removeFromCart,getTotalCartAmount,url,currency,deliveryCharge} = useContext(StoreContext);
+  const {cartItems, food_list, removeFromCart, getTotalCartAmount, url, currency, tableFee} = useContext(StoreContext);
   const navigate = useNavigate();
 
   return (
@@ -36,11 +36,20 @@ const Cart = () => {
         <div className="cart-total">
           <h2>Cart Totals</h2>
           <div>
-            <div className="cart-total-details"><p>Subtotal</p><p>{currency}{getTotalCartAmount()}</p></div>
+            <div className="cart-total-details">
+              <p>Subtotal</p>
+              <p>{currency}{getTotalCartAmount()}</p>
+            </div>
             <hr />
-            <div className="cart-total-details"><p>Delivery Fee</p><p>{currency}{getTotalCartAmount()===0?0:deliveryCharge}</p></div>
+            <div className="cart-total-details">
+              <p>Table Fee</p>
+              <p>{currency}{getTotalCartAmount() === 0 ? 0 : tableFee}</p>
+            </div>
             <hr />
-            <div className="cart-total-details"><b>Total</b><b>{currency}{getTotalCartAmount()===0?0:getTotalCartAmount()+deliveryCharge}</b></div>
+            <div className="cart-total-details">
+              <b>Total</b>
+              <b>{currency}{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + tableFee}</b>
+            </div>
           </div>
           <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
         </div>

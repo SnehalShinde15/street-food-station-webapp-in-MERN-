@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import validator from "validator";
+import mongoose from "mongoose";
 
 import { OAuth2Client } from 'google-auth-library';
 
@@ -67,18 +68,24 @@ const createToken = (id) =>{
 const registerUser = async (req, res) => {
     const {name, email, password} = req.body;
     try{
+        console.log("Attempting to register user:", { name, email });
+        
         //checking if user already exists
-        const exists = await userModel.findOne({email});
+        console.log("Checking for existing user with email:", email.toLowerCase());
+        const exists = await userModel.findOne({email: email.toLowerCase()});
         if(exists){
+            console.log("User already exists with email:", email);
             return res.json({success:false,message:"User already exists"});
         }
 
         //validating email and strong password 
         if(!validator.isEmail(email)){
+            console.log("Invalid email format:", email);
             return res.json({success:false,message:"Invalid email"});
         }
         
         if(password.length < 8){
+            console.log("Password too short");
             return res.json({success:false,message:"Password must be at least 8 characters"});
         }
 
@@ -87,18 +94,36 @@ const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password,salt);
 
         //new user creation
-        const newUser = new userModel({name, email, password:hashedPassword});
+        const newUser = new userModel({
+            name, 
+            email: email.toLowerCase(), 
+            password: hashedPassword
+        });
+        
+        console.log("Attempting to save new user to database");
+        console.log("Mongoose connection state:", mongoose.connection.readyState);
         const user = await newUser.save();
+        console.log("User saved successfully. User ID:", user._id);
+        console.log("User details:", {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            createdAt: user.createdAt
+        });
 
         const token = createToken(user._id);
         res.json({success:true,token});
 
         
     }catch(error){
-        console.log(error);
-        res.json({success:false,message:"Error in registering user"});
+        console.log("Error in registering user:", error);
+        console.log("Error details:", {
+            name: error.name,
+            message: error.message,
+            stack: error.stack
+        });
+        res.json({success:false,message:"Error in registering user: " + error.message});
     }
-    
 }
 
 

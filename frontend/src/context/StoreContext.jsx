@@ -5,12 +5,14 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url = "http://localhost:4000"
+    const url = import.meta.env.VITE_API_URL || "http://localhost:4000"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
+    const [hasTableReservation, setHasTableReservation] = useState(false);
+    const [tableReservationDetails, setTableReservationDetails] = useState(null);
     const currency = "₹";
-    const deliveryCharge = 50;
+    const tableFee = 50;
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -81,7 +83,11 @@ const StoreContextProvider = (props) => {
         loadCartData,
         setCartItems,
         currency,
-        deliveryCharge
+        tableFee,
+        hasTableReservation,
+        setHasTableReservation,
+        tableReservationDetails,
+        setTableReservationDetails
     };
 
     return (

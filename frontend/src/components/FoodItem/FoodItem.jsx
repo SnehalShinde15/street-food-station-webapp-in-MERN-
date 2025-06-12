@@ -1,25 +1,30 @@
 import React  from 'react'
 // import Rating from '../Rating'
+
+
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
 import { useContext } from 'react'
 import { StoreContext } from '../../context/StoreContext'
 const FoodItem = ({id,name,rating,price,description,image}) => {
- 
+  
   const {cartItems,addToCart,removeFromCart,url} = useContext(StoreContext);
+  
+  // Safely check if the item is in the cart
+  const isInCart = cartItems && id && cartItems[id] !== undefined;
+  const itemCount = isInCart ? cartItems[id] : 0;
 
   return (
     <div className='food-item'>
         <div className="food-item-img-container">
             <img loading='lazy' className='food-item-image' src={image} alt="" />
-            {!cartItems[id]
+            {!isInCart
               ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt=''/>
               :<div className='food-item-counter'>
                   <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="" />
-                  <p>{cartItems[id]}</p>
+                  <p>{itemCount}</p>
                   <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="" />
               </div>
-
             }
         </div>
           <div className="food-item-info">

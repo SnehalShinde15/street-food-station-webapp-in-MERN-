@@ -1,23 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import './Footer.css';
 import { assets } from '../../assets/assets';
+import { StoreContext } from '../../context/StoreContext';
+import { toast } from 'react-toastify';
 
 const Footer = () => {
   const [feedback, setFeedback] = useState('');
+  const { url } = useContext(StoreContext);
   
-  // Handle feedback submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const feedbackText = e.target[0].value; // Assuming the first input is the feedback
+    if (!feedback.trim()) {
+      toast.error('Please enter your feedback');
+      return;
+    }
 
     try {
-        const response = await axios.post('http://localhost:4000/api/feedback', { text: feedbackText }); // Change 'feedback' to 'text'
-        // Handle response, e.g., show a success message
+      const response = await axios.post(`${url}/api/feedback`, { text: feedback });
+      if (response.data.success) {
+        toast.success('Thank you for your feedback!');
+        setFeedback(''); // Clear the input after successful submission
+      } else {
+        toast.error('Failed to submit feedback. Please try again.');
+      }
     } catch (error) {
-        // Handle error
+      console.error('Feedback submission error:', error);
+      toast.error('Failed to submit feedback. Please try again later.');
     }
-};
+  };
 
   return (
     <div className='footer' id='footer'>
@@ -39,21 +50,21 @@ const Footer = () => {
         <div className="footer-about">
           <h2>ABOUT US</h2>
           <p>
-            Elevating your dining experience with every bite. Discover a world of flavors and indulge in our carefully curated menu, delivered straight to your door. Taste the difference with Street Food Station, where quality meets convenience.
+            Elevating your dining experience with every bite. Discover a world of flavors and indulge in our carefully curated menu, delivered straight to your door. Taste the difference with DineSwift, where quality meets convenience.
           </p>
         </div>
 
         <div className="footer-contact">
           <h2>CONTACT US</h2>
           <ul>
-            <li>+91 9313495425</li>
-            <li>streetfoodstation.official@gmail.com</li>
+            <li>+91 8446168109</li>
+            <li>snehal05shinde@gmail.com</li>
           </ul>
         </div>
       </div>
 
       <hr />
-      <p className="footer-copyright">Copyright 2024 © Streetfoodstation.com - All rights reserved.</p>
+      <p className="footer-copyright">Copyright 2024 © DineSwift.com - All rights reserved.</p>
     </div>
   );
 };

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './TableReservation.css';  // Ensure this path is correct
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { StoreContext } from '../../context/StoreContext';
 
 const TableReservation = ({ loggedInUserEmail }) => {  // Pass logged-in user email as a prop
+    const { url, setHasTableReservation, setTableReservationDetails } = useContext(StoreContext);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,8 +31,13 @@ const TableReservation = ({ loggedInUserEmail }) => {  // Pass logged-in user em
         // }
 
         try {
-            const response = await axios.post('http://localhost:4000/api/tables/reserve', formData);
+            const response = await axios.post(`${url}/api/tables/reserve`, formData);
             toast.success(response.data.message);  // Use toast for success message
+            
+            // Set the table reservation state
+            setHasTableReservation(true);
+            setTableReservationDetails(formData);
+            
             setFormData({
                 name: '',
                 email: '',
